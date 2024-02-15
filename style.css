@@ -1,0 +1,100 @@
+body {
+  margin: 0;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background-color: #000;
+  background-image: radial-gradient(white, transparent 5%),
+    radial-gradient(white, transparent 5%),
+    radial-gradient(white, transparent 5%),
+    radial-gradient(white, transparent 5%);
+  background-size: 10px 10px; /* збільшуємо розмір зірок */
+  background-position: 0 0, 25% 25%, 50% 50%, 75% 75%; /* змінюємо позицію зірок */
+  animation: stars 1s infinite;
+}
+
+/* Решта CSS-коду для сонця, Землі, місяця та інших елементів залишається незмінним */
+
+.container {
+  font-size: 10px;
+  width: 40em;
+  height: 40em;
+  position: relative;
+  background-color: transparent; /* Прозорий фон контейнера */
+}
+
+.sun {
+  position: absolute;
+  top: 15em;
+  left: 15em;
+  width: 10em;
+  height: 10em;
+  background-color: yellow;
+  border-radius: 50%;
+  box-shadow: 0 0 3em white;
+}
+
+.earth,
+.moon {
+  position: absolute;
+  border-style: solid;
+  border-color: white transparent transparent transparent;
+  border-width: 0.1em 0.1em 0 0;
+  border-radius: 50%;
+}
+
+.earth {
+  top: 5em;
+  left: 5em;
+  width: 30em;
+  height: 30em;
+  animation: orbit 36s linear infinite;
+}
+
+.moon {
+  top: 0;
+  right: 0;
+  width: 8em;
+  height: 8em;
+  animation: orbit 2.7s linear infinite;
+}
+
+.earth::before,
+.moon::before {
+  content: "";
+  position: absolute;
+  border-radius: 50%;
+}
+
+.earth::before {
+  top: 2.8em;
+  right: 2.8em;
+  width: 3em;
+  height: 3em;
+  background-color: rgb(83, 173, 218);
+}
+
+.moon::before {
+  top: 0.8em;
+  right: 0.2em;
+  width: 1.2em;
+  height: 1.2em;
+  background-color: rgb(143, 140, 140);
+}
+
+@keyframes orbit {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes stars {
+  0% {
+    background-position: 0 0, 25% 25%, 50% 50%, 75% 75%; /* Початкова позиція зоряного неба */
+  }
+  100% {
+    background-position: 100% 100%, 75% 75%, 50% 50%, 25% 25%; /* Кінцева позиція зоряного неба */
+  }
+}
